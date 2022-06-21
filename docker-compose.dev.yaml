@@ -1,0 +1,29 @@
+services:
+  api:
+    container_name: playground_users
+    ports:
+      - 3000:3000
+    environment:
+      - PGUSER=playground
+      - PGHOST=db
+      - PGPASSWORD=password
+      - PGDATABASE=playground_dev
+      - PGPORT=5432
+      - NODE_ENV=development
+    depends_on:
+      - db
+    command: bash -c "npm install && npm run seedDev && npm run dev"
+
+  db:
+    container_name: dev_db
+    volumes:
+      - 'dbdata:/var/lib/postgresql/data'
+    environment:
+      - POSTGRES_DB=playground_dev
+      - POSTGRES_USER=playground
+      - POSTGRES_PASSWORD=password
+volumes:
+  dbdata:
+networks:
+  default:
+    name: demo_app_dev

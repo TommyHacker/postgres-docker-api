@@ -1,0 +1,14 @@
+services:
+  api:
+    image: node:latest
+    working_dir: /code
+    volumes:
+      - type: bind
+        source: ./api
+        target: /code
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=playground
+    volumes:
+      - './db/migrations:/docker-entrypoint-initdb.d/:ro'
