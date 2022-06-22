@@ -1,6 +1,4 @@
-IF EXISTS DROP TABLE users;
-
-INSERT INTO users("name","password")
+INSERT INTO users("username","password")
 VALUES
     ("tommy hacker", "password"),
     ("reuben hacker", "password"),

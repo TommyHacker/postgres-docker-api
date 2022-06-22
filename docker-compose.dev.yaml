@@ -4,10 +4,10 @@ services:
     ports:
       - 3000:3000
     environment:
-      - PGUSER=playground
+      - PGUSER=tom
       - PGHOST=db
       - PGPASSWORD=password
-      - PGDATABASE=playground_dev
+      - PGDATABASE=dev_db
       - PGPORT=5432
       - NODE_ENV=development
     depends_on:
@@ -17,10 +17,10 @@ services:
   db:
     container_name: dev_db
     volumes:
-      - 'dbdata:/var/lib/postgresql/data'
+      - "dbdata:/var/lib/postgresql/data"
     environment:
-      - POSTGRES_DB=playground_dev
-      - POSTGRES_USER=playground
+      - POSTGRES_DB=dev_db
+      - POSTGRES_USER=tom
       - POSTGRES_PASSWORD=password
 volumes:
   dbdata:
